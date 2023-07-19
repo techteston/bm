@@ -75,6 +75,24 @@ with st.container():
     
     with chart_col:
         st.subheader('The Forecast Profile')
+        fig, ax1 = plt.subplots()
+
+        # Plot the SAL as bars on the primary y-axis
+        ax1.bar(df['Period'], df['Sales in Period'], color='blue', label='Sales in Period')
+        ax1.set_xlabel('Period')
+        ax1.set_ylabel('Sales in Period', color='blue')
+
+        # Create a twin axes for CSAL on the secondary y-axis
+        ax2 = ax1.twinx()
+        ax2.plot(df['Period'], df['Cumulative Sales'], color='red', label='Cumulative Sales')
+        ax2.set_ylabel('Cumulative Sales', color='red')
+
+        # Add a legend
+        ax1.legend(loc='upper left')
+        ax2.legend(loc='upper right')
+
+        # Display the chart using Streamlit
+        st.pyplot(fig)
 
     with table_col:
         st.subheader('The Forecast Data')
