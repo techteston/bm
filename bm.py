@@ -7,7 +7,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 # In[4]:
 
 def bass_model(p, q, M, periods=1024):
