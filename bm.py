@@ -74,24 +74,20 @@ with st.container():
     
     with chart_col:
         st.subheader('The Forecast Profile')
-        fig, ax1 = plt.subplots()
-
-        # Plot the SAL as bars on the primary y-axis
-        ax1.bar(df['Period'], df['Sales in Period'], color='blue', label='Sales in Period')
-        ax1.set_xlabel('Period')
-        ax1.set_ylabel('Sales in Period', color='blue')
-
-        # Create a twin axes for CSAL on the secondary y-axis
-        ax2 = ax1.twinx()
-        ax2.plot(df['Period'], df['Cumulative Sales'], color='red', label='Cumulative Sales')
-        ax2.set_ylabel('Cumulative Sales', color='red')
-
-        # Add a legend
-        ax1.legend(loc='upper left')
-        ax2.legend(loc='upper right')
-
-        # Display the chart using Streamlit
-        st.pyplot(fig)
+        import streamlit as st
+        from bokeh.plotting import figure
+        
+        x = [1, 2, 3, 4, 5]
+        y = [6, 7, 2, 4, 5]
+        
+        p = figure(
+            title='simple line example',
+            x_axis_label='x',
+            y_axis_label='y')
+        
+        p.line(x, y, legend_label='Trend', line_width=2)
+        
+        st.bokeh_chart(p, use_container_width=True)
 
     with table_col:
         st.subheader('The Forecast Data')
