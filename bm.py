@@ -4,9 +4,7 @@
 # In[1]:
 
 
-import streamlit as st
-import pandas as pd
-import numpy as np
+
 # In[4]:
 
 def bass_model(p, q, M, periods=1024):
@@ -55,7 +53,7 @@ with st.container():
     with q_col:
         q = st.number_input('Coefficient of Imitation', format="%.3f", value=0.2)
     with M_col:
-        M = st.number_input('Total Potential Sales', value=1000)
+    M = st.number_input('Total Potential Sales', value=1000)
 
     # Check if the inputs are numeric
     if not isinstance(p, (float, np.float64)):
@@ -74,18 +72,6 @@ with st.container():
     
     with chart_col:
         st.subheader('The Forecast Profile')
-       
-        x = [1, 2, 3, 4, 5]
-        y = [6, 7, 2, 4, 5]
-        
-        p = figure(
-            title='simple line example',
-            x_axis_label='x',
-            y_axis_label='y')
-        
-        p.line(x, y, legend_label='Trend', line_width=2)
-        
-        st.bokeh_chart(p, use_container_width=True)
 
     with table_col:
         st.subheader('The Forecast Data')
