@@ -4,7 +4,10 @@
 # In[1]:
 
 
-
+import streamlit as st
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 # In[4]:
 
 def bass_model(p, q, M, periods=1024):
@@ -53,7 +56,7 @@ with st.container():
     with q_col:
         q = st.number_input('Coefficient of Imitation', format="%.3f", value=0.2)
     with M_col:
-    M = st.number_input('Total Potential Sales', value=1000)
+        M = st.number_input('Total Potential Sales', value=1000)
 
     # Check if the inputs are numeric
     if not isinstance(p, (float, np.float64)):
